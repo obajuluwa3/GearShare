@@ -1,0 +1,29 @@
+<div>
+
+	<div>
+		<div>
+			<h1>Equipment Near You</h1>
+			<input placeholder="Search equipment near you">
+			<button>Filter</button>
+			<hr>
+		</div>
+		<div  *ngFor="let equipment of equipments">
+			<div>
+				<img src="{{equipment.equip_img}}" width="200" height="200">
+			</div>
+			<div>
+				<h2>{{equipment.model}} {{equipment.brand}} {{equipment.equip_type}}</h2>
+				<h4>Description</h4>
+				<p>{{equipment.description}}</p>
+				<strong>Hourly Rate</strong>
+				<h2>${{equipment.hourly_rental_price}}</h2>
+				<strong>24-hr Rate</strong>
+				<h2>${{equipment.daily_rental_price}}</h2>
+				<strong>Status: <span>Available</span></strong>
+				<strong>Contact Owner</strong>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+</div>

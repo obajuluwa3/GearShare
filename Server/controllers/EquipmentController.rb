@@ -3,14 +3,15 @@ class EquipmentController < Sinatra::Base
     response['Access-Control-Allow-Origin'] = '*'
     content_type :json
     equipments = Equipment.all
-    all_equipments = []
-    equipments.each do |equipment|
-      rentals = equipment.rentals
-      user = equipment.user
-      equips_and_rentals = {equipment: equipment, user: user, rentals: rentals}
-      all_equipments.push(equips_and_rentals)
-    end
-    all_equipments.to_json
+    equipments.to_json
+    # all_equipments = []
+    # equipments.each do |equipment|
+    #   rentals = equipment.rentals
+    #   user = equipment.user
+    #   equips_and_rentals = {equipment: equipment, user: user, rentals: rentals}
+    #   all_equipments.push(equips_and_rentals)
+    # end
+    # all_equipments.to_json
   end
 
   get '/:id' do

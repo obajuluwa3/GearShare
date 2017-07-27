@@ -1,0 +1,12 @@
+<div style="text-align:center">
+	<input [(ngModel)]="newUser.firstname" placeholder="First Name"/><br /><br />
+	<input [(ngModel)]="newUser.lastname" placeholder="Last Name"/><br /><br />
+	<input [(ngModel)]="newUser.email" placeholder="Email"/><br /><br />
+	<input [(ngModel)]="newUser.username" placeholder="Username"/><br /><br />
+	<input [(ngModel)]="newUser.password" placeholder="Password"/><br /><br />
+	<input [(ngModel)]="newUser.address" placeholder="Address"/><br /><br />
+	<input [(ngModel)]="newUser.city" placeholder="City"/><br /><br />
+	<input [(ngModel)]="newUser.state" placeholder="State"/><br /><br />
+	<button (click)="register()">Create Account</button><br />
+	<a routerLink="/login">back to login</a>
+</div>

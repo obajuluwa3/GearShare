@@ -5,6 +5,7 @@ require './models/EquipmentModel'
 require './models/UserModel'
 require './models/RentalModel'
 
+require './controllers/ApplicationController'
 require './controllers/EquipmentController'
 require './controllers/RentalController'
 require './controllers/UserController'

@@ -7,19 +7,19 @@
 			<button>Filter</button>
 			<hr>
 		</div>
-		<div  *ngFor="let equipment of equipments">
+		<div  *ngFor="let info of all_equipments">
 			<div>
-				<img src="{{equipment.equip_img}}" width="200" height="200">
+				<img src="{{info.equipment.equip_img}}" width="200" height="200">
 			</div>
 			<div>
-				<h2>{{equipment.model}} {{equipment.brand}} {{equipment.equip_type}}</h2>
+				<h2>{{info.equipment.model}} {{info.equipment.brand}} {{info.equipment.equip_type}}</h2>
 				<h4>Description</h4>
-				<p>{{equipment.description}}</p>
+				<p>{{info.equipment.description}}</p>
 				<strong>Hourly Rate</strong>
-				<h2>{{equipment.hourly_rental_price}}</h2>
+				<h2>{{info.equipment.hourly_rental_price}}</h2>
 				<strong>24-hr Rate</strong>
-				<h2>{{equipment.daily_rental_price}}</h2>
-				<strong>Status: <span>Available</span></strong>
+				<h2>{{info.equipment.daily_rental_price}}</h2>
+				<strong>Status:  <span *ngIf="info.rentals[0]?.active == true || !info.rentals[0]?.active">Available</span><span *ngIf="info.rentals[0]?.active == false">Unavailable</span></strong><br />
 				<strong>Contact Owner</strong>
 			</div>
 			<hr>

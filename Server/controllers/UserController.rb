@@ -1,14 +1,13 @@
-class UserController < Sinatra::Base
+require 'SecureRandom'
+
+class UserController < ApplicationController
+  
   get '/' do
-    response['Access-Control-Allow-Origin'] = '*'
-    content_type :json
     users = User.all
     users.to_json
   end
 
   get '/:id' do
-    response['Access-Control-Allow-Origin'] = '*'
-    content_type :json
     id = params[:id]
     user = User.find(id)
     equipments = user.equipments
@@ -17,18 +16,17 @@ class UserController < Sinatra::Base
   end
 
 # {"email":"payne@qj.com", "username":"payne", "password":"soccer123", "address":"150 N. Michigan Avenue", "city":"Chicago", "state":"IL"}
-  post '/' do
-    response['Access-Control-Allow-Origin'] = '*'
-    content_type :json
+  post '/register' do
     request_body = JSON.parse(request.body.read)
-    user = User.new(request_body)
+    user = User.new
+    user.username = request_body["username"]
+    user.password = request_body["password"]
+    user.token = SecureRandom.hex
     user.save
     user.to_json
   end
 
   patch '/:id' do
-    response['Access-Control-Allow-Origin'] = '*'
-    content_type :json
     id = params[:id]
     user = User.find(id)
     request_body = JSON.parse(request.body.read)
@@ -38,12 +36,21 @@ class UserController < Sinatra::Base
   end
 
   delete '/:id' do
-    response['Access-Control-Allow-Origin'] = '*'
-    content_type :json
     id = params[:id]
     user = User.find(id)
     user.destroy
     users = User.all
     users.to_json
   end
+
+  post '/login' do
+    user_details = JSON.parse(request.body.read)
+    user = User.find_by({username: user_details["username"]})
+    if user && user.authenticate(user_details["password"])
+      user.to_json
+    else
+      "ACCESS DENIED"
+    end
+  end
+
 end

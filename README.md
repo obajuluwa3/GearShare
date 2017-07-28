@@ -9,6 +9,7 @@ A full-stack application that allows musicians to rent out their musical equipme
 ## Technologies Used
 * Angular 4
 * Sinatra
+* PostgreSQL
 * Ruby
 * Adobe Illustrator
 
@@ -22,6 +23,12 @@ A full-stack application that allows musicians to rent out their musical equipme
 - Started by detailing out [user stories](http://i.imgur.com/RvcV2AL.jpg)
 - Created a [Trello board](https://trello.com/b/KJT63NaN) using Adobe Illustrator to keep track of tasks and timelines
 - Created [wireframes](http://i.imgur.com/tj4Tqd7.jpg)
+
+## Skills & Lessons Learned
+* Building databases and tables using PostgreSQL
+* Built a server application with routes and password encryption and authentication using Ruby and Sinatra 
+* Created a client application using Angular and utilized components and two-way data binding
+* Connected server and client and enabled user to update and interact with information stored in database through client views
 
 ## Possible further development..
 * As shown from userstories and wireframes, the initial goal of the app was to give musicians the ability to find equipment by location but due to time constraints I could not do this. I plan to keep building on the foundation laid with this project.

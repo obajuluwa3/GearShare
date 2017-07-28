@@ -14,6 +14,11 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: 'list',
     component: ListComponent
   },

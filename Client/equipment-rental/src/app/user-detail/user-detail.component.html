@@ -1,0 +1,31 @@
+<div>
+
+	<div style="text-align:center">
+		<div>
+		<button routerLink="/userlist">Manage My Equipment</button>
+		<button (click)="logOut()">Log Out</button>
+		</div>
+		<div>
+			<h1>Edit Equipment</h1>
+			<hr>
+			<div>
+				<img src="{{equipment.equip_img}}" width="200" height="200"/>
+			</div>
+			<div>
+				<input [(ngModel)]="equipment.equip_img" placeholder="Equipment image URL"/><br /><br />
+				<input [(ngModel)]="equipment.category" placeholder="Equipment Category"/><br /><br />
+				<input [(ngModel)]="equipment.equip_type" placeholder="Equipment type"/><br /><br />
+				<input [(ngModel)]="equipment.brand" placeholder="Brand"/><br /><br />
+				<input [(ngModel)]="equipment.model" placeholder="Model"/><br /><br />
+				<input [(ngModel)]="equipment.hourly_rental_price" placeholder="Rental price per hour"/><br /><br />
+				<input [(ngModel)]="equipment.daily_rental_price" placeholder="Rental price for 24 hours"/><br /><br />
+				<input [(ngModel)]="equipment.user_id" type="hidden"	/>
+				<textarea [(ngModel)]="equipment.description" placeholder="Description"></textarea><br /><br />
+			</div>
+			<button (click)="patchEquipment()">Save Changes</button><br />
+			<a routerLink="/userlist">cancel</a>
+		</div>
+		
+	</div>
+
+</div>

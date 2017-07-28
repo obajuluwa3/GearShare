@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Response} from '@angular/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 // class Equipment{
 // 	id: number;
@@ -64,6 +64,11 @@ export class ListComponent {
         alert("ERROR");
       }
     })
+  }
+
+  logOut(){
+    window.localStorage.clear();
+    this.router.navigate(['/login'])
   }
 
 }

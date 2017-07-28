@@ -26,9 +26,10 @@ export class RegisterComponent {
   	}
 
   	register(){
-    this.http.post('http://localhost:9393/users/register', this.newUser).subscribe(response => {
-      window.localStorage.setItem("token",response.json().token)
-      this.router.navigate(['/list'])
-    })
-  }
+	    this.http.post('http://localhost:9393/users/register', this.newUser).subscribe(response => {
+	      window.localStorage.setItem("token",response.json().token)
+	      window.localStorage.setItem("user_id", response.json().id)
+	      this.router.navigate(['/list'])
+	    })
+	  }
 }

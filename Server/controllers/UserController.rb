@@ -19,8 +19,12 @@ class UserController < ApplicationController
   post '/register' do
     request_body = JSON.parse(request.body.read)
     user = User.new
+    user.email = request_body["email"]
     user.username = request_body["username"]
     user.password = request_body["password"]
+    user.address = request_body["address"]
+    user.city = request_body["city"]
+    user.state = request_body["state"]
     user.token = SecureRandom.hex
     user.save
     user.to_json

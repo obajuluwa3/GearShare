@@ -2,16 +2,16 @@
 
 	<div>
 		<div style="text-align:center">
-		<button routerLink="/userlist">Manage My Equipment</button>
-		<button (click)="logOut()">Log Out</button>
+			<button routerLink="/list">Equipment Search</button>
+			<button (click)="logOut()">Log Out</button>
 		</div>
 		<div>
-			<h1>Equipment Near You</h1>
-			<input placeholder="Search equipment near you">
-			<button>Filter</button>
+			<h1>Manage My Equipment</h1>
+			<!-- <input placeholder="Search equipment near you">
+			<button>Filter</button> -->
 			<hr>
 		</div>
-		<div  *ngFor="let info of all_equipments">
+		<div  *ngFor="let info of my_equipments">
 			<div>
 				<img src="{{info.equipment.equip_img}}" width="200" height="200">
 			</div>
@@ -19,14 +19,19 @@
 				<h2>{{info.equipment.model}} {{info.equipment.brand}} {{info.equipment.equip_type}}</h2>
 				<h4>Description</h4>
 				<p>{{info.equipment.description}}</p>
-				<strong>Hourly Rate</strong><button>Rent</button>
+				<strong>Hourly Rate</strong>
 				<h2>{{info.equipment.hourly_rental_price}}</h2>
-				<strong>24-hr Rate</strong><button>Rent</button>
+				<strong>24-hr Rate</strong>
 				<h2>{{info.equipment.daily_rental_price}}</h2>
 				<strong>Status:  <span *ngIf="info.rentals[0]?.active == true || !info.rentals[0]?.active">Available</span><span *ngIf="info.rentals[0]?.active == false">Unavailable</span></strong><br />
-				<strong>Contact Owner</strong>
+				<strong>Contact Owner</strong><br />
+				<button (click)="goToEquipment(info)">Edit Equipment</button>
+				<button (click)="deleteEquipment(info)">Remove Equipment</button><br />
 			</div>
 			<hr>
+		</div>
+		<div style="text-align:center">
+			<button routerLink="/new-equipment">Add Equipment</button>
 		</div>
 	</div>
 

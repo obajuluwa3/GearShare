@@ -1,0 +1,28 @@
+<div>
+
+	<div style="text-align:center">
+		<div>
+		<button routerLink="/userlist">Manage My Equipment</button>
+		<button (click)="logOut()">Log Out</button>
+		</div>
+		<div>
+			<h1>Add New Equipment</h1>
+			<hr>
+			<div>
+				<input [(ngModel)]="newEquipment.firstname" placeholder="Equipment image URL"/><br /><br />
+				<input [(ngModel)]="newEquipment.lastname" placeholder="Equipment Category"/><br /><br />
+				<input [(ngModel)]="newEquipment.email" placeholder="Equipment type"/><br /><br />
+				<input [(ngModel)]="newEquipment.username" placeholder="Brand"/><br /><br />
+				<input [(ngModel)]="newEquipment.password" placeholder="Model"/><br /><br />
+				<input [(ngModel)]="newEquipment.address" placeholder="Rental price per hour"/><br /><br />
+				<input [(ngModel)]="newEquipment.city" placeholder="Rental price for 24 hours"/><br /><br />
+				<input [(ngModel)]="newEquipment.user_id" type="hidden"	/>
+				<textarea [(ngModel)]="newEquipment.description" placeholder="Description"></textarea><br /><br />
+			</div>
+			<button (click)="createNew()">Add Equipment</button><br />
+			<a routerLink="/userlist">cancel</a>
+		</div>
+		
+	</div>
+
+</div>

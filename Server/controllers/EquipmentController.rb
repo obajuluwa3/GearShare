@@ -12,6 +12,12 @@ class EquipmentController < ApplicationController
     all_equipments.to_json
   end
 
+  get '/userlist' do
+    equipments = Equipment.find(user_id)
+    equipments.to_json
+
+  end
+
   get '/:id' do
     id = params[:id]
     equipment = Equipment.find(id)
@@ -19,7 +25,7 @@ class EquipmentController < ApplicationController
   end
 
 # {"equip_type":"Acoustic Guitar", "model":"Fender", "brand":"FA-100 Dreadnought", "category":"Guitar", "condition":"Excellent", "available":true, "equip_img":"https://cdn.shopify.com/s/files/1/1210/3886/products/fender-fa-100-acoustic-pack-dreadnought_1600x.jpg?v=1468336757", "hourly_rental_price":5.00, "daily_rental_price":50.00, "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", "id_user":1}
-  post '/' do
+  post '/new' do
     request_body = JSON.parse(request.body.read)
     equipment = Equipment.new(request_body)
     equipment.save

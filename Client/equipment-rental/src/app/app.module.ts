@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { NewEquipmentComponent } from './new-equipment/new-equipment.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {
@@ -21,6 +24,18 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'userlist',
+    component: UserlistComponent
+  },
+  {
+    path: 'new-equipment',
+    component: NewEquipmentComponent
+  },
+  {
+    path: 'equipments/:id',
+    component: UserDetailComponent
   }
 ]
 
@@ -29,7 +44,10 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserlistComponent,
+    NewEquipmentComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

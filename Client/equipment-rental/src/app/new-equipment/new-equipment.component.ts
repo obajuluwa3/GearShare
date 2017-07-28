@@ -29,11 +29,12 @@ export class NewEquipmentComponent {
 	newEquipment: Equipment = new Equipment();
 
   	constructor(private http: Http, private router: Router) {
-  		this.newEquipment.user_id = +localStorage.getItem("user_id")
+  		this.newEquipment.user_id = +localStorage.getItem('user_id')
+  		console.log(this.newEquipment.user_id)
   	}
 
   	createNew(){
-	    this.http.post('http://localhost:9393/equipments/new', this.newEquipment).subscribe(response => {
+	    this.http.post('http://localhost:9393/equipments', this.newEquipment).subscribe(response => {
 	      this.router.navigate(['/userlist'])
 	    })
 	}

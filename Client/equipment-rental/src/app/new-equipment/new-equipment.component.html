@@ -9,13 +9,14 @@
 			<h1>Add New Equipment</h1>
 			<hr>
 			<div>
-				<input [(ngModel)]="newEquipment.firstname" placeholder="Equipment image URL"/><br /><br />
-				<input [(ngModel)]="newEquipment.lastname" placeholder="Equipment Category"/><br /><br />
-				<input [(ngModel)]="newEquipment.email" placeholder="Equipment type"/><br /><br />
-				<input [(ngModel)]="newEquipment.username" placeholder="Brand"/><br /><br />
-				<input [(ngModel)]="newEquipment.password" placeholder="Model"/><br /><br />
-				<input [(ngModel)]="newEquipment.address" placeholder="Rental price per hour"/><br /><br />
-				<input [(ngModel)]="newEquipment.city" placeholder="Rental price for 24 hours"/><br /><br />
+				<input [(ngModel)]="newEquipment.equip_img" placeholder="Equipment image URL"/><br /><br />
+				<input [(ngModel)]="newEquipment.category" placeholder="Equipment Category"/><br /><br />
+				<input [(ngModel)]="newEquipment.equip_type" placeholder="Equipment type"/><br /><br />
+				<input [(ngModel)]="newEquipment.brand" placeholder="Brand"/><br /><br />
+				<input [(ngModel)]="newEquipment.model" placeholder="Model"/><br /><br />
+				<input [(ngModel)]="newEquipment.condition" placeholder="Condition"/><br /><br />
+				<input [(ngModel)]="newEquipment.hourly_rental_price" placeholder="Rental price per hour"/><br /><br />
+				<input [(ngModel)]="newEquipment.daily_rental_price" placeholder="Rental price for 24 hours"/><br /><br />
 				<input [(ngModel)]="newEquipment.user_id" type="hidden"	/>
 				<textarea [(ngModel)]="newEquipment.description" placeholder="Description"></textarea><br /><br />
 			</div>

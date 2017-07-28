@@ -20,9 +20,9 @@ A full-stack application that allows musicians to rent out their musical equipme
 
 ## Project Planning
 - Created [Schemas and database tables](http://i.imgur.com/JXcKQEJ.png)
-- Started by detailing out [user stories](http://i.imgur.com/RvcV2AL.jpg)
+- Started by detailing out [User stories](http://i.imgur.com/RvcV2AL.jpg)
 - Created a [Trello board](https://trello.com/b/KJT63NaN) using Adobe Illustrator to keep track of tasks and timelines
-- Created [wireframes](http://i.imgur.com/tj4Tqd7.jpg)
+- Created [Wireframes](http://i.imgur.com/tj4Tqd7.jpg)
 
 ## Skills & Lessons Learned
 * Building databases and tables using PostgreSQL

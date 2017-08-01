@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { NewEquipmentComponent } from './new-equipment/new-equipment.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'equipments/:id',
     component: UserDetailComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 ]
 
@@ -52,7 +57,8 @@ const routes: Routes = [
     RegisterComponent,
     UserlistComponent,
     NewEquipmentComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

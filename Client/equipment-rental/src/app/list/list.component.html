@@ -19,9 +19,10 @@
 				<h2>{{info.equipment.model}} {{info.equipment.brand}} {{info.equipment.equip_type}}</h2>
 				<h4>Description</h4>
 				<p>{{info.equipment.description}}</p>
-				<strong>Hourly Rate</strong><button (click)="createRental(info.equipment.hourly_rental_price)">Rent</button>
+				<strong>Hourly Rate</strong><button (click)="createRental(info.equipment.hourly_rental_price, info.equipment.id)">Rent</button>
 				<h2>{{info.equipment.hourly_rental_price | currency:'USD':true:'1.2-2'}}</h2>
-				<strong>24-hr Rate</strong><button (click)="createRental(info.equipment.hourly_rental_price)">Rent</button>
+				<strong>24-hr Rate</strong>
+				<button (click)="createRental(info.equipment.daily_rental_price, info.equipment.id)">Rent</button>
 				<h2>{{info.equipment.daily_rental_price | currency:'USD':true:'1.2-2'}}</h2>
 				<strong>Status:  <span *ngIf="info.rentals[0]?.active == true || !info.rentals[0]?.active">Available</span><span *ngIf="info.rentals[0]?.active == false">Unavailable</span></strong><br />
 				<strong>Contact Owner</strong>

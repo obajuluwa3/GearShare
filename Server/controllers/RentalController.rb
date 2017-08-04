@@ -26,6 +26,19 @@ class RentalController < ApplicationController
     rental.to_json
   end
 
+  post '/myrentals' do
+    token = params[:token]
+    user = User.find_by(token: token)
+    request_body = JSON.parse(request.body.read)
+    rental = Rental.new
+    rental.active = request_body["active"]
+    rental.rental_date = request_body["rental_date"]
+    rental.cost = request_body["cost"]
+    rental.user_id = user.id
+    rental.equipment_id = request_body["equipment_id"]
+    rental.save
+    rental.to_json
+  end
 # {"active":true, "rental_date":"01-01-2017", "cost":50.00, "user_id":1, "equipment_id":6}  
   post '/' do
     request_body = JSON.parse(request.body.read)

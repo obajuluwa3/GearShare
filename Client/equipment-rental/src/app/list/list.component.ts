@@ -44,7 +44,9 @@ class Rental {
 export class ListComponent {
 
   all_equipments: All_equipment[] = [];
-  search = ""
+  newRental: Rental = new Rental();
+  search = "";
+  date: any = new Date();
   constructor(private http: Http, private router: Router) {
   	this.getEquipments();
   }
@@ -72,6 +74,17 @@ export class ListComponent {
       }
     })
   }
+
+  createRental(price, id){
+      this.http.post('http://localhost:9393/rentals/myrentals?token=' + window.localStorage.token, 
+        {active: true,
+         rental_date: this.date,
+         cost: price,
+         equipment_id: id}
+        ).subscribe(response => {
+        this.router.navigate(['/rentals'])
+      })
+    }
 
   logOut(){
     window.localStorage.clear();

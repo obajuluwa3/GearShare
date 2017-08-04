@@ -54,7 +54,19 @@ class RentalController < ApplicationController
     request_body = JSON.parse(request.body.read)
     rental.update_attributes(request_body)
     rental.save
-    rental.to_json
+    token = params[:token]
+    user = User.find_by(token: token)
+    rentals = user.rentals
+    rental_info = []
+    rentals.each do |rental|
+      equipment = rental.equipment
+      user = rental.user
+      group = {rental: rental, equipment: equipment, user: user}
+      if rental.active == true
+        rental_info.push(group)
+      end
+    end
+    rental_info.to_json 
   end
 
   delete '/:id' do

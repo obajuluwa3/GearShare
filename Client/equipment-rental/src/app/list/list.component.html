@@ -22,9 +22,9 @@
 				<strong>Hourly Rate</strong><button (click)="createRental(info.equipment.hourly_rental_price, info.equipment.id)">Rent</button>
 				<h2>{{info.equipment.hourly_rental_price | currency:'USD':true:'1.2-2'}}</h2>
 				<strong>24-hr Rate</strong>
-				<button (click)="createRental(info.equipment.daily_rental_price, info.equipment.id)">Rent</button>
-				<h2>{{info.equipment.daily_rental_price | currency:'USD':true:'1.2-2'}}</h2>
-				<strong>Status:  <span *ngIf="info.rentals[0]?.active == true || !info.rentals[0]?.active">Available</span><span *ngIf="info.rentals[0]?.active == false">Unavailable</span></strong><br />
+				<button (click)="createRental(info.equipment.daily_rental_price, info.equipment.id)">Rent</button><br />
+				<strong>Status:  <span>{{info.rentals[0] != undefined && info.rentals[0].active == true ? "Unavailable" : "Available"}}</span></strong><br />
+
 				<strong>Contact Owner</strong>
 			</div>
 			<hr>

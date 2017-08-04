@@ -24,7 +24,7 @@
 				<h2>{{info.equipment.hourly_rental_price}}</h2>
 				<strong>24-hr Rate</strong>
 				<h2>{{info.equipment.daily_rental_price}}</h2>
-				<strong>Status:  <span *ngIf="info.rentals[0]?.active == true || !info.rentals[0]?.active">Available</span><span *ngIf="info.rentals[0]?.active == false">Unavailable</span></strong><br />
+				<strong>Status:  <span>{{info.rentals[0] != undefined && info.rentals[0].active == true ? "Unavailable" : "Available"}}</span></strong><br />
 				<strong>Contact Owner</strong><br />
 				<button (click)="goToEquipment(info)">Edit Equipment</button>
 				<button (click)="deleteEquipment(info)">Remove Equipment</button><br />

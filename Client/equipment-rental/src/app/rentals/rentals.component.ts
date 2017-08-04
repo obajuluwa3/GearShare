@@ -43,7 +43,6 @@ export class RentalsComponent {
 	getEquipments(){
 	  	this.http.get('http://localhost:9393/rentals/myrentals?token=' + window.localStorage.token).subscribe(response => {
 	      this.rental_info = response.json()
-	      console.log(this.rental_info)
 	      }, err => {
 	      if(err.status === 403){
 	        this.router.navigate(['/login'])
@@ -59,12 +58,13 @@ export class RentalsComponent {
   	}
 
   	updateRental(info){
-    this.http.patch('http://localhost:9393/equipments/' + info.equipment.id + '?token=' + window.localStorage.token, {active: false}).subscribe(response =>{
-      this.rental_info = response.json()
-    }, err => {
-      if(err.status === 403){
+    this.http.patch('http://localhost:9393/rentals/' + info.rental.id + '?token=' + window.localStorage.token, {active: false}).subscribe(response =>{
+      	this.rental_info = response.json()
+      	console.log(this.rental_info)
+    	}, err => {
+      		if(err.status === 403){
         this.router.navigate(['/login'])
-      } else {
+      		} else {
         alert("ERROR");
       }
     })

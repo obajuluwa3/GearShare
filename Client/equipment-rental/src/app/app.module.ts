@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http'
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
@@ -12,6 +13,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { NewEquipmentComponent } from './new-equipment/new-equipment.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { SearchComponent } from './search/search.component';
+import { RentalsComponent } from './rentals/rentals.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'rentals',
+    component: RentalsComponent
   }
 ]
 
@@ -58,12 +64,16 @@ const routes: Routes = [
     UserlistComponent,
     NewEquipmentComponent,
     UserDetailComponent,
-    SearchComponent
+    SearchComponent,
+    RentalsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBOsph-vLUx4IDAKQoJT_NeVd6vDWJ44oQ'
+    }),
     RouterModule.forRoot(routes)
   ],
   providers: [],

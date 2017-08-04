@@ -1,7 +1,6 @@
 class EquipmentController < ApplicationController
   get '/' do
     equipments = Equipment.all
-    # equipments.to_json
     all_equipments = []
     equipments.each do |equipment|
       rentals = equipment.rentals
@@ -13,9 +12,17 @@ class EquipmentController < ApplicationController
   end
 
   get '/userlist' do
-    equipments = Equipment.find(user_id)
-    equipments.to_json
-
+    token = params[:token]
+    user = User.find_by(token: token)
+    equipments = user.equipments
+    all_equipments = []
+    equipments.each do |equipment|
+      rentals = equipment.rentals
+      user = equipment.user
+      equips_and_rentals = {equipment: equipment, user: user, rentals: rentals}
+      all_equipments.push(equips_and_rentals)
+    end
+    all_equipments.to_json
   end
 
   get '/:id' do
@@ -59,4 +66,18 @@ class EquipmentController < ApplicationController
     equipments = Equipment.all
     equipments.to_json
   end
+
+  post '/search' do
+    request_body = JSON.parse(request.body.read)
+    equipments = Equipment.where("equip_type ilike ?", "%" + request_body["equip_type"] + "%")
+    all_equipments = []
+    equipments.each do |equipment|
+      rentals = equipment.rentals
+      user = equipment.user
+      equips_and_rentals = {equipment: equipment, user: user, rentals: rentals}
+      all_equipments.push(equips_and_rentals)
+    end
+    all_equipments.to_json
+  end
+
 end

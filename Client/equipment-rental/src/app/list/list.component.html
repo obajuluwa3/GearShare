@@ -2,16 +2,16 @@
 
 	<div>
 		<div style="text-align:center">
-		<button routerLink="/userlist">Manage My Equipment</button>
-		<button (click)="logOut()">Log Out</button>
+			<button routerLink="/userlist">Manage My Equipment</button>
+			<button routerLink="/rentals">My Rentals</button>
+			<button (click)="logOut()">Log Out</button>
 		</div>
 		<div>
-			<h1>Equipment Near You</h1>
-			<input placeholder="Search equipment near you">
-			<button>Filter</button>
+			<input [(ngModel)]="search" placeholder="Search equipment near you">
+			<button (click)="searchEquip()">Search</button>
 			<hr>
 		</div>
-		<div  *ngFor="let info of all_equipments">
+		<div *ngFor="let info of all_equipments">
 			<div>
 				<img src="{{info.equipment.equip_img}}" width="200" height="200">
 			</div>
@@ -19,10 +19,10 @@
 				<h2>{{info.equipment.model}} {{info.equipment.brand}} {{info.equipment.equip_type}}</h2>
 				<h4>Description</h4>
 				<p>{{info.equipment.description}}</p>
-				<strong>Hourly Rate</strong><button>Rent</button>
-				<h2>{{info.equipment.hourly_rental_price}}</h2>
-				<strong>24-hr Rate</strong><button>Rent</button>
-				<h2>{{info.equipment.daily_rental_price}}</h2>
+				<strong>Hourly Rate</strong><button (click)="createRental(info.equipment.hourly_rental_price)">Rent</button>
+				<h2>{{info.equipment.hourly_rental_price | currency:'USD':true:'1.2-2'}}</h2>
+				<strong>24-hr Rate</strong><button (click)="createRental(info.equipment.hourly_rental_price)">Rent</button>
+				<h2>{{info.equipment.daily_rental_price | currency:'USD':true:'1.2-2'}}</h2>
 				<strong>Status:  <span *ngIf="info.rentals[0]?.active == true || !info.rentals[0]?.active">Available</span><span *ngIf="info.rentals[0]?.active == false">Unavailable</span></strong><br />
 				<strong>Contact Owner</strong>
 			</div>

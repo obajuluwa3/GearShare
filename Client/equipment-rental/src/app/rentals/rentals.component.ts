@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Router } from '@angular/router';
 
-class Equipment {
+class Rental {
+	rental_id: number;
+	active: boolean;
+	date: string;
+	cost: number;
 	equip_id: number;
 	equip_equip_type: string;
 	equip_model: string;
@@ -23,24 +27,23 @@ class Equipment {
 	user_city: string;
 	user_state: string;
 	user_token: string;
-	rentals: string[];
 }
 
 @Component({
-  selector: 'app-userlist',
-  templateUrl: './userlist.component.html',
-  styleUrls: ['./userlist.component.css']
+  selector: 'app-rentals',
+  templateUrl: './rentals.component.html',
+  styleUrls: ['./rentals.component.css']
 })
-export class UserlistComponent {
+export class RentalsComponent {
+	rental_info: Rental[] = [];
+	constructor(private http: Http, private router: Router) { 
+		this.getEquipments();
+	}
 
-	equip_info: Equipment[] = [];
-  	constructor(private http: Http, private router: Router) {
-	  	this.getEquipments();
-  	}
-
-  	getEquipments(){
-	  	this.http.get('http://localhost:9393/equipments/userlist?token=' + window.localStorage.token).subscribe(response => {
-	      this.equip_info = response.json()
+	getEquipments(){
+	  	this.http.get('http://localhost:9393/rentals/myrentals?token=' + window.localStorage.token).subscribe(response => {
+	      this.rental_info = response.json()
+	      console.log(this.rental_info)
 	      }, err => {
 	      if(err.status === 403){
 	        this.router.navigate(['/login'])
@@ -55,13 +58,9 @@ export class UserlistComponent {
 	    this.router.navigate(['/login'])
   	}
 
-  goToEquipment(info){
-    this.router.navigate(['/equipments/', info.equipment.id])
-  }
-
-  deleteEquipment(info){
+  	deleteRental(info){
     this.http.delete('http://localhost:9393/equipments/' + info.equipment.id + '?token' + window.localStorage.token).subscribe(response =>{
-      this.equip_info = response.json()
+      this.rental_info = response.json()
     }, err => {
       if(err.status === 403){
         this.router.navigate(['/login'])
@@ -70,4 +69,5 @@ export class UserlistComponent {
       }
     })
   }
+
 }

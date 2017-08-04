@@ -11,7 +11,6 @@ class UserController < ApplicationController
     id = params[:id]
     user = User.find(id)
     equipments = user.equipments
-    p equipments.to_json
     {user: user, equipments: equipments}.to_json
   end
 

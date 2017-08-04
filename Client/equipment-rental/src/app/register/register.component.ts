@@ -18,7 +18,6 @@ class User {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-	user: User[] = [];
 	newUser: User = new User();
 
   	constructor(private http: Http, private router: Router) {

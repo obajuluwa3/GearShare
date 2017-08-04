@@ -1,21 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Router } from '@angular/router';
-
-// class Equipment{
-// 	id: number;
-// 	equip_type: string;
-// 	model: string;
-// 	brand: string;
-// 	category: string;
-// 	condition: string;
-// 	available: boolean;
-// 	equip_img: string;
-// 	hourly_rental_price: number;
-// 	daily_rental_price: number;
-// 	description: string;
-// 	user_id: number;
-// }
+import { CurrencyPipe } from '@angular/common';
 
 class All_equipment {
 	equip_id: number;
@@ -41,6 +27,14 @@ class All_equipment {
 	rentals: string[];
 }
 
+class Rental {
+      id: number;
+      active: boolean;
+      rental_date: string;
+      cost: number;
+      user_id: number;
+      equipment_id: number;
+}
 
 @Component({
   selector: 'app-list',
@@ -50,6 +44,7 @@ class All_equipment {
 export class ListComponent {
 
   all_equipments: All_equipment[] = [];
+  search = ""
   constructor(private http: Http, private router: Router) {
   	this.getEquipments();
   }
@@ -66,31 +61,21 @@ export class ListComponent {
     })
   }
 
+  searchEquip(){
+    this.http.post('http://localhost:9393/equipments/search?token=' + window.localStorage.token, {equip_type: this.search}).subscribe(response =>
+      {this.all_equipments = response.json()
+      }, err => {
+      if(err.status === 403){
+        this.router.navigate(['/login'])
+      } else {
+        alert("ERROR");
+      }
+    })
+  }
+
   logOut(){
     window.localStorage.clear();
     this.router.navigate(['/login'])
   }
 
 }
-
-// @Component({
-//   selector: 'app-list',
-//   templateUrl: './list.component.html',
-//   styleUrls: ['./list.component.css']
-// })
-// export class ListComponent {
-
-//   equipments: Equipment[] = [];
-//   constructor(private http: Http, private router: Router) {
-//   	this.getEquipments();
-//   }
-
-//   getEquipments(){
-//   	this.http.get('http://localhost:9393/equipments').subscribe(response =>
-//       this.equipments = response.json()
-//       // console.log(response)
-//     )
-//     console.log(this.equipments)
-//   }
-
-// }

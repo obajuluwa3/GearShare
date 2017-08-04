@@ -58,8 +58,8 @@ export class RentalsComponent {
 	    this.router.navigate(['/login'])
   	}
 
-  	deleteRental(info){
-    this.http.delete('http://localhost:9393/equipments/' + info.equipment.id + '?token' + window.localStorage.token).subscribe(response =>{
+  	updateRental(info){
+    this.http.patch('http://localhost:9393/equipments/' + info.equipment.id + '?token=' + window.localStorage.token, {active: false}).subscribe(response =>{
       this.rental_info = response.json()
     }, err => {
       if(err.status === 403){

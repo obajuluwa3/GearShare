@@ -26,7 +26,7 @@
 				<h2>{{info.equipment.daily_rental_price}}</h2>
 				<strong>Status:  <span *ngIf="info.rental?.active == true || !info.rental?.active">Available</span><span *ngIf="info.rental?.active == false">Unavailable</span></strong><br />
 				<strong>Contact Owner</strong><br />
-				<button (click)="deleteRental(info)">Complete Rental</button><br />
+				<button (click)="updateRental(info)">Complete Rental</button><br />
 			</div>
 			<hr>
 		</div>

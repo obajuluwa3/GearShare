@@ -50,6 +50,7 @@ class RentalController < ApplicationController
   patch '/:id' do
     id = params[:id]
     rental = Rental.find(id)
+    rental.equipment.available = false
     request_body = JSON.parse(request.body.read)
     rental.update_attributes(request_body)
     rental.save

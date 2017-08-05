@@ -1,5 +1,5 @@
-# Gear Share - WDI Project 3
-*Created by Odunayo Obajuluwa - July 21-28, 2017*
+# Gear Share
+*WDI Project 3 - Created by Odunayo Obajuluwa - July 21-28, 2017*
 
  **General Assembly, Chicago - WDI Course**
 

@@ -31,7 +31,8 @@ A full-stack application that allows musicians to rent out their musical equipme
 * Connected server and client and enabled user to update and interact with information stored in database through client views
 
 ## Possible further development..
-* As shown from userstories and wireframes, the initial goal of the app was to give musicians the ability to find equipment by location but due to time constraints I could not do this. I plan to keep building on the foundation laid with this project.
+* Cleaner front-end - I will be taking this project further by styling the front-end using CSS and JavaScript to make it more appealing
+* As shown from userstories and wireframes, the initial goal of the app was to give musicians the ability to find equipment by location but due to time constraints I could achieve this. I plan to keep building on the foundation laid with this project.
 * I would like to explore styling with Angular to make the app more interactive and attractive
 * Deploying the app on a mobile platform
 * Adding picture uploading functionality
